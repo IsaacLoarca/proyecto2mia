@@ -11,8 +11,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/gin-gonic/gin"
 	ginCors "github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
 )
 
 func analizar(c *gin.Context) {
@@ -230,11 +230,17 @@ func main() {
 	router := gin.Default()
 
 	// Usar middleware de CORS oficial de Gin (configuración directa similar al ejemplo de Fiber)
+	// CORS: cuando AllowCredentials = true no se puede usar "*" como AllowOrigins
+	// Usamos AllowOriginFunc para reflejar el Origin (aceptar cualquier origen) pero
+	// podrías restringirlo a dominios concretos por seguridad.
 	router.Use(ginCors.New(ginCors.Config{
-		AllowOrigins:     []string{"*"},
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Content-Type", "Authorization"},
 		AllowCredentials: true,
+		// Permitir dinámicamente cualquier origen (en producción restringir a orígenes confiables)
+		AllowOriginFunc: func(origin string) bool {
+			return true
+		},
 	}))
 
 	// Health check endpoint
