@@ -1,0 +1,7 @@
+.git
+godisk
+*.log
+*.out
+tmp/
+dist/
+node_modules/
