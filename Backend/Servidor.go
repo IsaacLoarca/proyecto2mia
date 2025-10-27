@@ -12,7 +12,7 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
+	ginCors "github.com/gin-contrib/cors"
 )
 
 func analizar(c *gin.Context) {
@@ -220,11 +220,7 @@ func directoryTreeHandler(c *gin.Context) {
 }
 
 func main() {
-	// Cargar variables de entorno
-	err := godotenv.Load()
-	if err != nil {
-		log.Println("No se encontró archivo .env, usando variables del sistema")
-	}
+	// Configuración fija: usar localhost:8080 (no depender de .env)
 
 	// Configurar Gin para producción si está en producción
 	if os.Getenv("GIN_MODE") == "release" {
@@ -233,25 +229,13 @@ func main() {
 
 	router := gin.Default()
 
-	// Add CORS middleware con configuración más segura
-	corsOrigin := os.Getenv("CORS_ORIGIN")
-	if corsOrigin == "" {
-		corsOrigin = "*" // Default para desarrollo
-	}
-
-	router.Use(func(c *gin.Context) {
-		c.Header("Access-Control-Allow-Origin", corsOrigin)
-		c.Header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
-		c.Header("Access-Control-Allow-Headers", "Content-Type, Authorization")
-		c.Header("Access-Control-Allow-Credentials", "true")
-
-		if c.Request.Method == "OPTIONS" {
-			c.AbortWithStatus(204)
-			return
-		}
-
-		c.Next()
-	})
+	// Usar middleware de CORS oficial de Gin (configuración directa similar al ejemplo de Fiber)
+	router.Use(ginCors.New(ginCors.Config{
+		AllowOrigins:     []string{"*"},
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowHeaders:     []string{"Content-Type", "Authorization"},
+		AllowCredentials: true,
+	}))
 
 	// Health check endpoint
 	router.GET("/health", func(c *gin.Context) {
@@ -273,18 +257,8 @@ func main() {
 
 	router.POST("/analizar", analizar)
 
-	// Configurar puerto desde variable de entorno
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
-	}
-
-	host := os.Getenv("HOST")
-	if host == "" {
-		host = "localhost"
-	}
-
-	address := fmt.Sprintf("%s:%s", host, port)
-	log.Printf("Servidor iniciando en %s", address)
-	router.Run(address)
+	// Lanzamiento directo de la API: escuchar en todas las interfaces en el puerto 8080
+	bindAddr := "0.0.0.0:8080"
+	log.Printf("Servidor iniciando en %s", bindAddr)
+	router.Run(bindAddr)
 }
