@@ -14,7 +14,7 @@ RUN go mod download
 COPY . .
 
 # Paso 3: compilar binario estático
-RUN CGO_ENABLED=0 GOOS=linux go build -o godisk .
+RUN CGO_ENABLED=0 GOOS=linux go build -p 1 -o godisk .
 
 # ===== STAGE 2: runtime =====
 FROM alpine:latest
