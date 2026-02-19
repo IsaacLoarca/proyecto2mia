@@ -106,6 +106,9 @@ const FileSystemViewer = ({ partitionId, isVisible }: FileSystemViewerProps) => 
     setSelectedNode(path);
   };
 
+  // Marcar como usado temporalmente para evitar TS6133 hasta que se integre en la UI
+  void selectNode;
+
   const renderTreeNode = (node: FileSystemNode, level: number = 0) => {
     const isExpanded = expandedFolders.has(node.path);
     const isSelected = selectedNode === node.path;

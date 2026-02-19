@@ -92,7 +92,6 @@ function App() {
           const savedSession = localStorage.getItem('userSession');
           if (savedSession) {
             try {
-              const session = JSON.parse(savedSession);
               // Intentar reautenticar si hay credenciales guardadas
               setOutput('No hay sesión activa en el servidor. Use el botón de login para iniciar sesión.');
               localStorage.removeItem('userSession'); // Limpiar sesión obsoleta
@@ -113,8 +112,8 @@ function App() {
           setShowFileSystem(true);
           setOutput(`Sesión local restaurada (servidor no disponible)\nPartición: ${session.partitionId}\nUsuario: ${session.username}\n\nVisualizador del sistema de archivos activado.`);
         } catch (error) {
-          localStorage.removeItem('userSession');
         }
+                      JSON.parse(savedSession);
       }
     }
   };

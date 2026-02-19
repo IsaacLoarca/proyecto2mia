@@ -9,40 +9,40 @@
 
 
 #CREANDO DISCO
-mkdisk -size=1 -unit=K -fit=FF -path=/home/isaac1224/Calificacion_MIA/Discos/Disco2.mia
+mkdisk -size=1 -unit=K -fit=FF -path=/home/ubuntu/Calificacion_MIA/Discos/Disco2.mia
 
 
 #CREACION DE PARTICIONES
 #100
-fdisk -type=P -unit=b -name=Part1 -size=100 -pat    h=/home/isaac1224/Calificacion_MIA/Discos/Disco2.mia -fit=BF
+fdisk -type=P -unit=b -name=Part1 -size=100 -path=/home/ubuntu/Calificacion_MIA/Discos/Disco2.mia -fit=BF
 #100
-fdisk -type=P -unit=b -name=Part2 -size=100 -path=/home/isaac1224/Calificacion_MIA/Discos/Disco2.mia -fit=BF
+fdisk -type=P -unit=b -name=Part2 -size=100 -path=/home/ubuntu/Calificacion_MIA/Discos/Disco2.mia -fit=BF
 #100
-fdisk -type=P -unit=b -name=Part3 -size=100 -path=/home/isaac1224/Calificacion_MIA/Discos/Disco2.mia -fit=BF
+fdisk -type=P -unit=b -name=Part3 -size=100 -path=/home/ubuntu/Calificacion_MIA/Discos/Disco2.mia -fit=BF
 #559
-fdisk -type=P -unit=b -name=Part4 -size=559 -path=/home/isaac1224/Calificacion_MIA/Discos/Disco2.mia -fit=BF
+fdisk -type=P -unit=b -name=Part4 -size=559 -path=/home/ubuntu/Calificacion_MIA/Discos/Disco2.mia -fit=BF
 
 
 #ELIMINANDO PARTICIONES
-fdisk -delete=fast -name=Part1 -path=/home/isaac1224/Calificacion_MIA/Discos/Disco2.mia
-fdisk -delete=fast -name=Part3 -path=/home/isaac1224/Calificacion_MIA/Discos/Disco2.mia 
+fdisk -delete=fast -name=Part1 -path=/home/ubuntu/Calificacion_MIA/Discos/Disco2.mia
+fdisk -delete=fast -name=Part3 -path=/home/ubuntu/Calificacion_MIA/Discos/Disco2.mia 
 
 
 #QUITANDO ESPACIO
-fdisk -add=-200 -size=10240 -unit=b -path=/home/isaac1224/Calificacion_MIA/Discos/Disco2.mia -name=Part4
+fdisk -add=-200 -size=10240 -unit=b -path=/home/ubuntu/Calificacion_MIA/Discos/Disco2.mia -name=Part4
 
 
 #CREACION DE PARTICIONES
 #150
-fdisk -type=P -unit=b -name=Part5 -size=100 -path=/home/isaac1224/Calificacion_MIA/Discos/Disco2.mia -fit=BF
+fdisk -type=P -unit=b -name=Part5 -size=100 -path=/home/ubuntu/Calificacion_MIA/Discos/Disco2.mia -fit=BF
 #100
-fdisk -type=P -unit=b -name=Part6 -size=100 -path=/home/isaac1224/Calificacion_MIA/Discos/Disco2.mia -fit=BF
+fdisk -type=P -unit=b -name=Part6 -size=100 -path=/home/ubuntu/Calificacion_MIA/Discos/Disco2.mia -fit=BF
 
 #MOUNT
-mount -path=/home/isaac1224/Calificacion_MIA/Discos/Disco2.mia -name=Part2
+mount -path=/home/ubuntu/Calificacion_MIA/Discos/Disco2.mia -name=Part2
 
 #REPORTE
-rep -id=461A -path=/home/isaac1224/Calificacion_MIA/Reportes/diskB.jpg -name=disk
+rep -id=461A -path=/home/ubuntu/Calificacion_MIA/Reportes/diskB.jpg -name=disk
 
 
 #______________________________________________________________
@@ -53,41 +53,41 @@ rep -id=461A -path=/home/isaac1224/Calificacion_MIA/Reportes/diskB.jpg -name=dis
 
 #******* CREACION DE DISCO *******
 # 60M A
-mkdisk -size=60 -unit=M -fit=FF -path=/home/isaac1224/Calificacion_MIA/Discos/Disco1.mia
+mkdisk -size=60 -unit=M -fit=FF -path=/home/ubuntu/Calificacion_MIA/Discos/Disco1.mia
 
 
 #******* CREACION DE PARTICIONES *******
 #DISCO 1
 # 20M
-fdisk -type=P -unit=b -name=Part1 -size=20971520 -path=/home/isaac1224/Calificacion_MIA/Discos/Disco1.mia -fit=BF
+fdisk -type=P -unit=b -name=Part1 -size=20971520 -path=/home/ubuntu/Calificacion_MIA/Discos/Disco1.mia -fit=BF
 # 10M
-fdisk -type=P -unit=k -name=Part2 -size=10240 -path=/home/isaac1224/Calificacion_MIA/Discos/Disco1.mia -fit=BF
+fdisk -type=P -unit=k -name=Part2 -size=10240 -path=/home/ubuntu/Calificacion_MIA/Discos/Disco1.mia -fit=BF
 # 10M
-fdisk -type=P -unit=M -name=Part3 -size=10 -path=/home/isaac1224/Calificacion_MIA/Discos/Disco1.mia -fit=BF
+fdisk -type=P -unit=M -name=Part3 -size=10 -path=/home/ubuntu/Calificacion_MIA/Discos/Disco1.mia -fit=BF
 # 10M
-fdisk -type=P -unit=b -name=Part4 -size=10485760 -path=/home/isaac1224/Calificacion_MIA/Discos/Disco1.mia -fit=BF
+fdisk -type=P -unit=b -name=Part4 -size=10485760 -path=/home/ubuntu/Calificacion_MIA/Discos/Disco1.mia -fit=BF
 
 
 #ELIMINANDO PARTICIONES
-fdisk -delete=fast -name=Part3 -path=/home/isaac1224/Calificacion_MIA/Discos/Disco1.mia
-fdisk -delete=fast -name=Part4 -path=/home/isaac1224/Calificacion_MIA/Discos/Disco1.mia 
+fdisk -delete=fast -name=Part3 -path=/home/ubuntu/Calificacion_MIA/Discos/Disco1.mia
+fdisk -delete=fast -name=Part4 -path=/home/ubuntu/Calificacion_MIA/Discos/Disco1.mia 
 
 
 #QUITANDO ESPACIO
-fdisk -add=-500 -size=10240 -unit=k -path=/home/isaac1224/Calificacion_MIA/Discos/Disco1.mia -name=Part2
+fdisk -add=-500 -size=10240 -unit=k -path=/home/ubuntu/Calificacion_MIA/Discos/Disco1.mia -name=Part2
 
 
 #AGREGANDO ESPACIO 
-fdisk -add=500 -unit=k -path=/home/isaac1224/Calificacion_MIA/Discos/Disco1.mia -name=Part2
+fdisk -add=500 -unit=k -path=/home/ubuntu/Calificacion_MIA/Discos/Disco1.mia -name=Part2
 
 #******* MONTAR PARTICIONES *******
 #DISCO 1
 #461a -> 46 sus ultimos dos digitos
-mount -path=/home/isaac1224/Calificacion_MIA/Discos/Disco1.mia -name=Part1
+mount -path=/home/ubuntu/Calificacion_MIA/Discos/Disco1.mia -name=Part1
 #462a -> 46 sus ultimos dos digitos
-mount -path=/home/isaac1224/Calificacion_MIA/Discos/Disco1.mia -name=Part2
+mount -path=/home/ubuntu/Calificacion_MIA/Discos/Disco1.mia -name=Part2
 
-rep -id=462B -path=/home/isaac1224/Calificacion_MIA/Reportes/diskA.jpg -name=disk
+rep -id=462B -path=/home/ubuntu/Calificacion_MIA/Reportes/diskA.jpg -name=disk
 
 #******* DESMONTAR PARTICION *******
 unmount -id=462B 
